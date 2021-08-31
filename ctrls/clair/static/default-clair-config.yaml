@@ -1,0 +1,45 @@
+http_listen_addr: :8080
+introspection_addr: ""
+log_level: info
+indexer:
+  connstring: ""
+  scanlock_retry: 10
+  layer_scan_concurrency: 5
+  migrations: true
+  airgap: false
+matcher:
+  connstring: ""
+  max_conn_pool: 100
+  indexer_addr: ""
+  migrations: true
+  disable_updaters: false
+notifier:
+  connstring: ""
+  migrations: true
+  indexer_addr: ""
+  matcher_addr: ""
+  poll_interval: 5m
+  delivery_interval: 1m
+  webhook:
+    target: ""
+    callback: ""
+    signed: false
+auth:
+  psk:
+    key: ""
+    iss:
+    - quay
+    - clairctl
+trace:
+  name: ""
+  jaeger:
+    agent:
+      endpoint: ""
+    collector:
+      endpoint: ""
+    service_name: ""
+    buffer_max: 0
+metrics:
+    name: prometheus
+    dogstatsd:
+        url: ""

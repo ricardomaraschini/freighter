@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: clair
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    - name: introspection
+      port: 8089
+      protocol: TCP
+      targetPort: 8089
+  selector:
+    component: clair
+  type: ClusterIP
