@@ -12,9 +12,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
 
-	"github.com/ricardomaraschini/carrier/ctrls/clair"
-	"github.com/ricardomaraschini/carrier/ctrls/postgres"
-	"github.com/ricardomaraschini/carrier/infra/mctrl"
+	"github.com/ricardomaraschini/freighter/ctrls/clair"
+	"github.com/ricardomaraschini/freighter/ctrls/postgres"
+	"github.com/ricardomaraschini/freighter/infra/mctrl"
 )
 
 func main() {

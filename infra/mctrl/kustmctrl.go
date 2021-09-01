@@ -13,8 +13,8 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/ricardomaraschini/carrier/infra/fsloader"
-	"github.com/ricardomaraschini/carrier/infra/resource"
+	"github.com/ricardomaraschini/freighter/infra/fsloader"
+	"github.com/ricardomaraschini/freighter/infra/resource"
 )
 
 // BaseKustomizationPath is the location for the base kustomization.yaml file. This controller

@@ -1,4 +1,4 @@
-module github.com/ricardomaraschini/carrier
+module github.com/ricardomaraschini/freighter
 
 go 1.16
 

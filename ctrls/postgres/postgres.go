@@ -15,8 +15,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/ricardomaraschini/carrier/infra/mctrl"
-	"github.com/ricardomaraschini/carrier/infra/resource"
+	"github.com/ricardomaraschini/freighter/infra/mctrl"
+	"github.com/ricardomaraschini/freighter/infra/resource"
 )
 
 //go:embed kustomize/*

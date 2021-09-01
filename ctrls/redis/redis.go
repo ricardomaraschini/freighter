@@ -11,8 +11,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	ktypes "sigs.k8s.io/kustomize/api/types"
 
-	"github.com/ricardomaraschini/carrier/infra/mctrl"
-	"github.com/ricardomaraschini/carrier/infra/resource"
+	"github.com/ricardomaraschini/freighter/infra/mctrl"
+	"github.com/ricardomaraschini/freighter/infra/resource"
 )
 
 //go:embed kustomize/*
