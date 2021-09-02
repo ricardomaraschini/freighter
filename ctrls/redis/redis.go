@@ -51,7 +51,7 @@ type Redis struct {
 // mutateKustomization mutates the base Kustomization for a Redis deployment. Only appends the
 // provided name prefix.
 func (r *Redis) mutateKustomization(
-	ctx context.Context, kust *ktypes.Kustomization, adv mctrl.Advertisement,
+	ctx context.Context, kust *ktypes.Kustomization, adv mctrl.Ads,
 ) error {
 	kust.NamePrefix = fmt.Sprintf("%s-", r.namePrefix)
 	return nil
@@ -59,8 +59,8 @@ func (r *Redis) mutateKustomization(
 
 // Advertise returns data this component advertises. This component advertises only the redis
 // address (service address) and port.
-func (r *Redis) Advertise(ctx context.Context) (mctrl.Advertisement, error) {
-	var adv mctrl.Advertisement
+func (r *Redis) Advertise(ctx context.Context) (mctrl.Ads, error) {
+	var adv mctrl.Ads
 	if r.Overlay() == mctrl.ScaleDownOverlay || r.Overlay() == mctrl.NotAppliedOverlay {
 		return adv, nil
 	}

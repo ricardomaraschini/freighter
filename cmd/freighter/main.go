@@ -14,6 +14,7 @@ import (
 
 	"github.com/ricardomaraschini/freighter/ctrls/clair"
 	"github.com/ricardomaraschini/freighter/ctrls/postgres"
+	"github.com/ricardomaraschini/freighter/ctrls/redis"
 	"github.com/ricardomaraschini/freighter/infra/mctrl"
 )
 
@@ -45,6 +46,22 @@ func main() {
 	)
 	ad = apply(ctx, pgsql, mctrl.BaseOverlay, ad)
 
+	log.Printf("deploying redis")
+	rds := redis.New(
+		cli,
+		redis.WithNamespace("rmarasch"),
+		redis.WithNamePrefix("clair"),
+		redis.WithOwnerReference(
+			metav1.OwnerReference{
+				APIVersion: "v1",
+				Name:       "testing",
+				Kind:       "ConfigMap",
+				UID:        cm.UID,
+			},
+		),
+	)
+	ad = apply(ctx, rds, mctrl.BaseOverlay, ad)
+
 	log.Printf("deploying clair")
 	clr := clair.New(
 		cli,
@@ -61,6 +78,12 @@ func main() {
 	)
 	apply(ctx, clr, mctrl.BaseOverlay, ad)
 
+	log.Printf("scaling down clair")
+	apply(ctx, clr, mctrl.ScaleDownOverlay, ad)
+	log.Printf("scaling down redis")
+	apply(ctx, rds, mctrl.ScaleDownOverlay, ad)
+	log.Printf("scaling down pgsql")
+	apply(ctx, pgsql, mctrl.ScaleDownOverlay, ad)
 }
 
 func apply(
